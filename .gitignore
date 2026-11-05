@@ -220,8 +220,8 @@ __marimo__/
 # macOS
 .DS_Store
 
-# Generated figures (belong in the paper repo)
-figures/
+# Generated figures (script output at repo root; paper/figures/ is tracked source)
+/figures/
 
 # Profiling results (generated data, not source)
-profiling_results/
+/profiling_results/
