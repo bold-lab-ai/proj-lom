@@ -2,8 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(flake8 *)",
-      "Bash(pip show *)",
-      "Bash(conda env list)"
+      "Bash(uv pip show *)",
+      "Bash(uv pip list)"
     ]
   }
 }

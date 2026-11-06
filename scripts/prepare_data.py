@@ -273,7 +273,7 @@ def _build_nle_db(unzipped_dir: str, db_path: str, dataset: str) -> None:
     except ImportError:
         raise ImportError(
             "NLE is required for DB build.\n"
-            "  pip install git+https://github.com/NetHack-LE/nle.git@main"
+            "  uv sync"
         )
     t0 = time.time()
     nld_db.create(filename=db_path)
