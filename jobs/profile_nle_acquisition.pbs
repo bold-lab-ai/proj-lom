@@ -12,6 +12,8 @@
 # Usage: qsub jobs/myriad_profile.pbs
 #
 # Assumes nld-aa is already downloaded and extracted on Myriad.
+# Assumes uv is installed on Myriad:
+#   curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # --------------------------------------------------------------------------- #
 # SGE directives  — identical to the production job
@@ -41,17 +43,19 @@ REPORT_DIR="$CODE_DIR/logs"
 # --------------------------------------------------------------------------- #
 # Environment
 # --------------------------------------------------------------------------- #
-module load python/miniconda3/24.3.0-0
-source "$UCL_CONDA_PATH/etc/profile.d/conda.sh"
-if ! conda env list | grep -q "^lom-convert "; then
-    conda create -n lom-convert -c conda-forge -y \
-        python=3.11 \
-        cmake make autoconf libtool pkg-config flex bison bzip2 zlib \
-        "numpy>=1.26,<2" "tqdm>=4.66" "psutil>=6.0" pip
-    conda run -n lom-convert pip install "tyro>=0.8" "nle>=0.9"
-fi
-conda activate lom-convert
-pip install -q py-spy
+export PATH="$HOME/.local/bin:$PATH"
+cd "$CODE_DIR"
+# Conversion needs no torch: skip it and its CUDA libraries.
+uv sync --frozen --no-install-project \
+    --no-install-package torch \
+    --no-install-package cuda-toolkit \
+    --no-install-package cuda-bindings \
+    --no-install-package nvidia-cudnn-cu13 \
+    --no-install-package nvidia-cusparselt-cu13 \
+    --no-install-package nvidia-nccl-cu13 \
+    --no-install-package nvidia-nvshmem-cu13 \
+    --no-install-package triton
+source "$CODE_DIR/.venv/bin/activate"
 
 mkdir -p "$OUTPUT_DIR" "$REPORT_DIR"
 
