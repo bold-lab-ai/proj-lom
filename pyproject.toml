@@ -10,20 +10,23 @@ authors = [
   {name = "Eduardo Pignatelli", email = "edu.pignatelli@gmail.com"},
 ]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.13,<3.14"
 license = {text = "Apache-2.0"}
 
 dependencies = [
-  "torch>=2.0",
-  "numpy",
-  "tyro",
-  "wandb",
-  "tqdm",
-  "nle @ git+https://github.com/NetHack-LE/nle.git@main",
+  "torch>=2.15",
+  "numpy>=2.5",
+  "tyro>=1.0",
+  "wandb>=0.31",
+  "tqdm>=4.70",
+  "psutil>=7.2",
+  "pyyaml>=6.0",
+  "matplotlib>=3.11",
+  "nle>=1.3",
 ]
 
-[project.optional-dependencies]
-dev = ["pytest", "pytest-cov"]
+[dependency-groups]
+dev = ["pytest>=9.0", "pytest-cov", "py-spy"]
 
 [tool.setuptools.packages.find]
 include = ["lom*"]
@@ -31,9 +34,16 @@ include = ["lom*"]
 [tool.black]
 line-length = 100
 
-[project.scripts]
-lom-pretrain = "scripts.pretrain:main"
-lom-download = "scripts.download_datasets:main"
-
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.uv]
+environments = ["sys_platform == 'linux'", "sys_platform == 'darwin'"]
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu132", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu132"
+url = "https://download.pytorch.org/whl/cu132"
+explicit = true
