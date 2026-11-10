@@ -37,7 +37,7 @@ for ctx in "${CTX_LENGTHS[@]}"; do
   for encoder in "${ENCODERS[@]}"; do
     out="${OUT_DIR}/horizon_lom_${encoder}_ctx${ctx}.json"
     echo "  encoder=${encoder}  ctx=${ctx}  -> ${out}"
-    uv run python -m scripts.profile_memory \
+    uv run scripts/profile_memory.py \
       --horizon-sweep \
       --method       lom \
       --encoder      "${encoder}" \

@@ -118,7 +118,7 @@ for seed in "${SEEDS[@]}"; do
   mkdir -p "${CKPT_LAM}"
   echo "  LAM  horizon=1  num_options=100  batch=${LAM_BATCH}"
   if ! _done "${CKPT_LAM}"; then
-    _launch bash -o pipefail -c "uv run python -m scripts.pretrain --method lam --signal latent \
+    _launch bash -o pipefail -c "uv run scripts/pretrain.py --method lam --signal latent \
       --config              '${CFG}' \
       --train.seed          '${seed}' \
       --train.ckpt_dir      '${CKPT_LAM}' \
@@ -132,7 +132,7 @@ for seed in "${SEEDS[@]}"; do
     mkdir -p "${CKPT_LOM}"
     echo "  LOM  horizon=128  stride=4  num_options=256  batch=${LOM_BATCH}"
     if ! _done "${CKPT_LOM}"; then
-      _launch bash -o pipefail -c "uv run python -m scripts.pretrain --method lom --signal latent \
+      _launch bash -o pipefail -c "uv run scripts/pretrain.py --method lom --signal latent \
         --config              '${CFG}' \
         --train.seed          '${seed}' \
         --train.ckpt_dir      '${CKPT_LOM}' \

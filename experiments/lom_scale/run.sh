@@ -105,7 +105,7 @@ for size in "${NUM_OPTIONS_LIST[@]}"; do
     CKPT_DIR="${CKPT_ROOT}/options${size}_seed${seed}"
     echo "  num_options=${size}  seed=${seed}  ckpt=${CKPT_DIR}"
     if ! _done "${CKPT_DIR}"; then
-      _launch bash -c "uv run python -m scripts.pretrain --method lom --signal latent \
+      _launch bash -c "uv run scripts/pretrain.py --method lom --signal latent \
         --config             '${CFG}' \
         --model.num_options  '${size}' \
         --train.seed         '${seed}' \
