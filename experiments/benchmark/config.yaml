@@ -34,7 +34,7 @@ train:
   eval_iters: 50
 
 wandb:
-  project: latent-option-model
+  project: proj-lom
   entity: bold-lab
   group: benchmark
   dir: /scratch/uceeepi/lom/wandb

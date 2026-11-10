@@ -79,7 +79,7 @@ class TrainCfg:
 
 @dataclass
 class WandbCfg:
-    project: str = "latent-option-model"
+    project: str = "proj-lom"
     entity: str = "bold-lab"
     group: str = "default"
     dir: str = "/scratch/uceeepi/lom/wandb"
