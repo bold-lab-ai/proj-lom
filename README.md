@@ -5,7 +5,7 @@
 Install [uv](https://docs.astral.sh/uv/), then run everything through `uv run`. It creates the environment from `uv.lock` on first use and keeps it in sync, so there is no environment to activate:
 
 ```bash
-uv run python -m scripts.pretrain --method lom --signal latent \
+uv run scripts/pretrain.py --method lom --signal latent \
     --config experiments/benchmark/config.yaml
 ```
 
