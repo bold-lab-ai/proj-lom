@@ -2,7 +2,7 @@
 
 Run on the cluster where NLD-AA data lives:
 
-    python -m scripts.benchmark_formats --nle-data-dir /scratch/uceeepi/lom/datasets --n-games 20
+    uv run python -m scripts.benchmark_formats --nle-data-dir /scratch/uceeepi/lom/datasets --n-games 20
 """
 
 from __future__ import annotations

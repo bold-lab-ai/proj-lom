@@ -37,7 +37,7 @@ Delete in dependency order: remove callers before the things they call. If A cal
 
 ### 5. Verify
 ```bash
-python -m py_compile <edited_files>           # syntax
+uv run python -m py_compile <edited_files>           # syntax
 grep -r "DeadSymbol" --include="*.py" .       # no strays
 ```
 
@@ -56,7 +56,7 @@ grep -r "DeadSymbol" --include="*.py" .       # no strays
 - `Bash` with `grep -r` — find all symbol references
 - `Read` — understand what each file exports before editing
 - `Edit` with `replace_all: true` — bulk rename (e.g. `_GameBuffer` → `GameBuffer`)
-- `Bash` with `python -m py_compile` — fast syntax check without needing the full runtime
+- `Bash` with `uv run python -m py_compile` — fast syntax check without needing the full runtime
 
 ---
 

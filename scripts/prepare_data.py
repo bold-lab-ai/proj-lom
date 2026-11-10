@@ -36,20 +36,20 @@ Output layout under --output-dir:
 Usage:
 
   # Full pipeline:
-  python -m scripts.prepare_data nao-top10 --output-dir /scratch/uceeepi/lom/datasets
-  python -m scripts.prepare_data nld-nao   --output-dir /scratch/uceeepi/lom/datasets
-  python -m scripts.prepare_data all       --output-dir /scratch/uceeepi/lom/datasets
+  uv run python -m scripts.prepare_data nao-top10 --output-dir /scratch/uceeepi/lom/datasets
+  uv run python -m scripts.prepare_data nld-nao   --output-dir /scratch/uceeepi/lom/datasets
+  uv run python -m scripts.prepare_data all       --output-dir /scratch/uceeepi/lom/datasets
 
   # Data already downloaded — skip download + extract:
-  python -m scripts.prepare_data nao-top10 --output-dir /scratch/... \\
+  uv run python -m scripts.prepare_data nao-top10 --output-dir /scratch/... \\
       --skip-download --skip-extract
 
   # Re-index only (conversion already done):
-  python -m scripts.prepare_data nld-nao --output-dir /scratch/... \\
+  uv run python -m scripts.prepare_data nld-nao --output-dir /scratch/... \\
       --skip-download --skip-extract --skip-db --skip-convert
 
   # Skip NLE DB build (not required when using NpzTrajectoryDataset):
-  python -m scripts.prepare_data nld-nao --output-dir /scratch/... --skip-db
+  uv run python -m scripts.prepare_data nld-nao --output-dir /scratch/... --skip-db
 """
 
 from __future__ import annotations
