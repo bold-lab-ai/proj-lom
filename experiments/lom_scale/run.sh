@@ -19,7 +19,7 @@ ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 CFG="${SCRIPT_DIR}/config.yaml"
 cd "${ROOT}"
 
-_cfg() { python3 -c "
+_cfg() { uv run python -c "
 import yaml, os
 c = yaml.safe_load(open('${CFG}'))
 v = c
@@ -105,7 +105,7 @@ for size in "${NUM_OPTIONS_LIST[@]}"; do
     CKPT_DIR="${CKPT_ROOT}/options${size}_seed${seed}"
     echo "  num_options=${size}  seed=${seed}  ckpt=${CKPT_DIR}"
     if ! _done "${CKPT_DIR}"; then
-      _launch bash -c "python3 -m scripts.pretrain --method lom --signal latent \
+      _launch bash -c "uv run python -m scripts.pretrain --method lom --signal latent \
         --config             '${CFG}' \
         --model.num_options  '${size}' \
         --train.seed         '${seed}' \
