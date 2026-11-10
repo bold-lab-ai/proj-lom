@@ -14,7 +14,6 @@ requires-python = ">=3.13,<3.14"
 license = {text = "Apache-2.0"}
 
 dependencies = [
-  "torch>=2.14,<2.15",
   "numpy>=2.5",
   "tyro>=1.0",
   "wandb>=0.31",
@@ -26,6 +25,9 @@ dependencies = [
 ]
 
 [dependency-groups]
+# torch is a default group, not a project dependency, so the data-conversion
+# jobs can sync an environment without it and its CUDA libraries.
+train = ["torch>=2.14,<2.15"]
 dev = ["pytest>=9.0", "pytest-cov", "py-spy"]
 
 [tool.setuptools.packages.find]
@@ -38,6 +40,7 @@ line-length = 100
 testpaths = ["tests"]
 
 [tool.uv]
+default-groups = ["train", "dev"]
 environments = ["sys_platform == 'linux'", "sys_platform == 'darwin'"]
 
 [tool.uv.sources]
