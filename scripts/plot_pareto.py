@@ -10,7 +10,7 @@ Produces two figures from a directory of JSON files:
                                linestyle = architecture (LOM only)
 
 Usage:
-    uv run python -m scripts.plot_pareto --in-dir profiling_results/ --out-dir figures/
+    uv run scripts/plot_pareto.py --in-dir profiling_results/ --out-dir figures/
 """
 from __future__ import annotations
 

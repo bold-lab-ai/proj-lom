@@ -1,10 +1,10 @@
 """Profile the per-stage timing of converting one nld-aa group.
 
 Usage:
-    uv run python scripts/profile_conversion.py <game_dir> [--n-games N]
+    uv run scripts/profile_conversion.py <game_dir> [--n-games N]
 
 Example:
-    uv run python scripts/profile_conversion.py \
+    uv run scripts/profile_conversion.py \
         /scratch/uceeepi/lom/datasets/nld-aa/nle_data/nle.2020-01-01 \
         --n-games 10
 

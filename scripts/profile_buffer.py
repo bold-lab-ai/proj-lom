@@ -1,9 +1,9 @@
 """Profile buffer_size tradeoffs: startup time, RAM, and sample reuse ratio.
 
 Usage:
-    uv run python -m scripts.profile_buffer                          # default sizes
-    uv run python -m scripts.profile_buffer --sizes 50 200 500       # custom sweep
-    uv run python -m scripts.profile_buffer --samp-per-sec 524       # measured GPU speed
+    uv run scripts/profile_buffer.py                                 # default sizes
+    uv run scripts/profile_buffer.py --sizes 50 200 500              # custom sweep
+    uv run scripts/profile_buffer.py --samp-per-sec 524              # measured GPU speed
 
 The script loads each buffer size, measures startup time, RAM, and unique start
 positions, then reports the reuse ratio given a GPU throughput figure.

@@ -6,7 +6,7 @@ output directory so results are never cached between trials.
 
 Usage::
 
-    uv run python scripts/worker_sweep.py \\
+    uv run scripts/worker_sweep.py \\
         --data-dir /scratch/uceeepi/lom/datasets \\
         --n-groups 20
 
