@@ -36,7 +36,7 @@ This is the primary claim of the NeurIPS 2025 paper. The benchmark experiment is
 - WandB run name encodes condition and seed (e.g. `lom-h128-s0`, `lam-h1-s0`)
 - No OOM: batch_size=2048 on nld-nao requires checking VRAM
 
-**Logging** (WandB, project `latent-option-models`, group `benchmark`):
+**Logging** (WandB, entity `bold-lab`, project `latent-option-model`, group `benchmark`):
 - `train/loss`, `train/recon_loss`, `train/vq_loss` every 50 iters
 - `eval/loss`, `eval/recon_loss` every 500 iters
 - `codebook/option_perplexity`, `codebook/action_perplexity` (collapse diagnostic)
