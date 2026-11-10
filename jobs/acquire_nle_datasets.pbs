@@ -34,9 +34,9 @@ CODE_DIR="$HOME/repos/latent-option-models-code"
 # Environment
 # --------------------------------------------------------------------------- #
 export PATH="$HOME/.local/bin:$PATH"
-cd "$CODE_DIR"
-# Conversion needs no torch: skip it and its CUDA libraries.
-uv sync --frozen --no-dev --no-install-project \
+# Conversion needs no torch: skip it and its CUDA libraries. Later uv run
+# calls pass --no-sync so they do not reinstall them.
+uv sync --project "$CODE_DIR" --frozen --no-dev --no-install-project \
     --no-install-package torch \
     --no-install-package cuda-toolkit \
     --no-install-package cuda-bindings \
@@ -46,7 +46,6 @@ uv sync --frozen --no-dev --no-install-project \
     --no-install-package nvidia-nvjitlink-cu12 \
     --no-install-package nvidia-nvshmem-cu12 \
     --no-install-package triton
-source "$CODE_DIR/.venv/bin/activate"
 
 mkdir -p logs
 OUTPUT_DIR="$LOCAL_DIR"
@@ -72,7 +71,7 @@ run_dataset() {
     local npz_dir="$OUTPUT_DIR/nle/$npz_subdir"
 
     echo "[$(date)] [$dataset] Starting..."
-    python -u "$CODE_DIR/scripts/prepare_data.py" "$dataset" \
+    uv run --project "$CODE_DIR" --no-sync python -u "$CODE_DIR/scripts/prepare_data.py" "$dataset" \
         --raw-dir    "$LOCAL_DIR" \
         --output-dir "$OUTPUT_DIR" \
         --log-dir    "$CODE_DIR/logs" \
