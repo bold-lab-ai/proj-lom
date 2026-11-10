@@ -26,7 +26,7 @@ train:
   eval_iters: 50
 
 wandb:
-  project: latent-option-models
-  entity: epignatelli_
+  project: latent-option-model
+  entity: bold-lab
   group: lom_scale
   dir: /scratch/uceeepi/lom/wandb

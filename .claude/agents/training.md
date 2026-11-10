@@ -64,7 +64,7 @@ You are responsible for everything that happens *during* a training run:
 - `lom/training.py` — training loop, loss functions, LR schedule, checkpointing
 - `lom/config.py` — all hyperparameters with their defaults
 - `experiments/*/config.yaml` — per-experiment hyperparameter overrides
-- WandB project: `latent-option-models` (entity: `epignatelli_`)
+- WandB project: `latent-option-model` (entity: `bold-lab`)
 
 ## How to diagnose a run
 
