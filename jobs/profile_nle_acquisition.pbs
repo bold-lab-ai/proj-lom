@@ -44,6 +44,7 @@ REPORT_DIR="$CODE_DIR/logs"
 # Environment
 # --------------------------------------------------------------------------- #
 export PATH="$HOME/.local/bin:$PATH"
+export PYTHONUNBUFFERED=1
 # Conversion needs no torch: skip it and its CUDA libraries. Later uv run
 # calls pass --no-sync so they do not reinstall them.
 uv sync --project "$CODE_DIR" --frozen --no-install-project \
