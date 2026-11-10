@@ -35,7 +35,7 @@ for encoder in "${ENCODERS[@]}"; do
   for method in "${METHODS[@]}"; do
     out="${OUT_DIR}/pareto_${method}_${encoder}.json"
     echo "  encoder=${encoder}  method=${method}  -> ${out}"
-    uv run python -m scripts.profile_memory \
+    uv run scripts/profile_memory.py \
       --pareto \
       --method   "${method}" \
       --encoder  "${encoder}" \
