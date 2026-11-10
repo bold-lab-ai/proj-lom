@@ -10,12 +10,12 @@ Four model variants:
   --method lam|lom controls only the horizon (1 vs --horizon).
 
 Usage:
-    CUDA_VISIBLE_DEVICES=0 python -m scripts.profile_memory --encoder reconstruction
-    CUDA_VISIBLE_DEVICES=0 python -m scripts.profile_memory --encoder latent
-    CUDA_VISIBLE_DEVICES=0 python -m scripts.profile_memory --pareto --encoder reconstruction --horizon 128
-    CUDA_VISIBLE_DEVICES=0 python -m scripts.profile_memory --pareto --encoder latent --horizon 128
-    CUDA_VISIBLE_DEVICES=0 python -m scripts.profile_memory --full-sweep --out-dir results/
-    CUDA_VISIBLE_DEVICES=0 python -m scripts.profile_memory --full-sweep --no-compile --out-dir results/
+    CUDA_VISIBLE_DEVICES=0 uv run python -m scripts.profile_memory --encoder reconstruction
+    CUDA_VISIBLE_DEVICES=0 uv run python -m scripts.profile_memory --encoder latent
+    CUDA_VISIBLE_DEVICES=0 uv run python -m scripts.profile_memory --pareto --encoder reconstruction --horizon 128
+    CUDA_VISIBLE_DEVICES=0 uv run python -m scripts.profile_memory --pareto --encoder latent --horizon 128
+    CUDA_VISIBLE_DEVICES=0 uv run python -m scripts.profile_memory --full-sweep --out-dir results/
+    CUDA_VISIBLE_DEVICES=0 uv run python -m scripts.profile_memory --full-sweep --no-compile --out-dir results/
 
 --full-sweep runs all 12 combinations in one go:
   - pareto (ctx × batch) for all 4 encoders × LAM + LOM  (8 runs)

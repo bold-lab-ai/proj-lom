@@ -6,18 +6,18 @@ Two required flags control what to train:
   --method lam|lom                 LAM (atomic, horizon=1) vs LOM (temporal, horizon from config)
 
 Usage:
-    python -m scripts.pretrain --method lam --signal latent
-    python -m scripts.pretrain --method lom --signal reconstruction
+    uv run python -m scripts.pretrain --method lam --signal latent
+    uv run python -m scripts.pretrain --method lom --signal reconstruction
 
     # Load an experiment config, then override individual fields:
-    python -m scripts.pretrain --method lam --signal latent \\
+    uv run python -m scripts.pretrain --method lam --signal latent \\
         --config experiments/benchmark/config.yaml
 
-    python -m scripts.pretrain --method lom --signal latent \\
+    uv run python -m scripts.pretrain --method lom --signal latent \\
         --config experiments/benchmark/config.yaml model.d_model=512
 
     # key=value overrides (Hydra-style) and --key value are both accepted:
-    python -m scripts.pretrain --method lom --signal reconstruction \\
+    uv run python -m scripts.pretrain --method lom --signal reconstruction \\
         train.batch_size=64 model.num_options=256
 """
 
